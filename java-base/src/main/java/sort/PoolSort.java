@@ -44,10 +44,12 @@ public class PoolSort {
      * @return
      */
     public static int[] signSort(int[] numbers) {
+        int num = 0;
         int length = numbers.length;
         for (int i = 0; i < length - 1; i++) {
             boolean channge = true;
             for (int j = 0; j < length - 1 - i; j++) {
+                num ++;
 
                 if (numbers[j] > numbers[j + 1]) {
                     int temp = numbers[j];
@@ -60,6 +62,7 @@ public class PoolSort {
                 break;
             }
         }
+        System.out.println("num"+ num);
         return numbers;
     }
 
@@ -103,10 +106,25 @@ public class PoolSort {
 
     }
 
-
+    public static int[] bubbleSort(int[] array) {
+        int num  = 0;
+        int length = array.length;
+        for(int i = 0; i < length -1; i++){
+            for (int j = 0 ; j < length - 1 - i; j++){
+                num ++;
+                if (array[j] > array[j + 1]){
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+        System.out.println("num:"+ num);
+        return array;
+    }
     public static void main(String[] args) {
-        int[] numbers = {1, 2, 4, 9, 1, 0, -1};
-        int[] ints = cocktailSort(numbers);
+        int[] numbers = {1, 2, 2, 2, 1, 0, -1};
+        int[] ints = signSort(numbers);
         for (int anInt : ints) {
             System.out.print(anInt);
             System.out.print(" ");

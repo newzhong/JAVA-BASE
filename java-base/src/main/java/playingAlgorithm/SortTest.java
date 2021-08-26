@@ -28,26 +28,6 @@ public class SortTest {
         return -1;
     }
 
-    public static void main(String[] args) {
-        int[] array = {1,23,44,55,66,777,5559};
-        int target = binarySearch(array, 66);
-        System.out.println("array====="+ target);
-
-        int[] ints = moveZeros(new int[]{1, 2, 0, 0, 56, 88, 999, 0});
-        for (int anInt : ints) {
-            System.out.print("---->"+anInt);
-        }
-        System.out.println("================");
-        Integer[] moveZerosByQu = moveZerosByQue(new int[]{1, 2, 0, 0, 56, 88, 999, 0});
-        for (int anInt : ints) {
-            System.out.print("---->"+anInt);
-        }
-        int[] moveZerosSwap1 = moveZerosSwap(new int[]{0, 2, 0, 0, 56, 88, 999, 0});
-        System.out.println("------------------");
-        for (int anInt : moveZerosSwap1) {
-            System.out.print("=====>"+anInt);
-        }
-    }
 
     /***
      * 将数组的所有0移动到末尾 其他保持相对位置
@@ -152,6 +132,60 @@ public class SortTest {
             }
         }
         return newLength;
-
     }
+    public static int[] sortColors(int[] nums) {
+        if(nums == null || nums.length < 1){
+            return nums;
+        }
+        int[] array = {0,0,0};
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] == 0){
+                array[0] = array[0] + 1;
+            }
+            if(nums[i]  == 1){
+                array[1] = array[1] + 1;
+            }
+            if(nums[i] == 2){
+                array[2] = array[2] + 1;
+            }
+        }
+
+
+        for(int j = 0; j < array[0]; j++){
+            nums[j] =0;
+        }
+        for(int j = array[0] ; j < nums.length- array[2]; j++){
+            nums[j] =1;
+        }
+        for(int j =array[0]+array[1]; j < nums.length; j++){
+            nums[j] =2;
+        }
+        return nums;
+    }
+
+    public static void main(String[] args) {
+       /* int[] array = {1,23,44,55,66,777,5559};
+        int target = binarySearch(array, 66);
+        System.out.println("array====="+ target);
+
+        int[] ints = moveZeros(new int[]{1, 2, 0, 0, 56, 88, 999, 0});
+        for (int anInt : ints) {
+            System.out.print("---->"+anInt);
+        }
+        System.out.println("================");
+        Integer[] moveZerosByQu = moveZerosByQue(new int[]{1, 2, 0, 0, 56, 88, 999, 0});
+        for (int anInt : ints) {
+            System.out.print("---->"+anInt);
+        }
+        int[] moveZerosSwap1 = moveZerosSwap(new int[]{0, 2, 0, 0, 56, 88, 999, 0});
+        System.out.println("------------------");
+        for (int anInt : moveZerosSwap1) {
+            System.out.print("=====>"+anInt);
+        }*/
+        int[] ints = sortColors(new int[]{2, 0, 2, 1, 1, 0});
+        for (int i = 0; i < ints.length; i++) {
+            System.out.print("====>"+ints[i]);
+        }
+    }
+
 }

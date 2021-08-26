@@ -62,10 +62,48 @@ public class QKSort {
         System.out.println();
     }
 
+    /***
+     * 分区
+     * @return
+     */
+    public static int quickSort1(int[] num, int left, int right){
+        int base = num[left];
+
+        while (left < right){
+            while (left < right && num[right] >= base){
+                right --;
+            }
+            num[left] = num[right];
+
+            while (left< right && num[left] <= base){
+                left ++;
+            }
+            num[right] = num[left];
+        }
+        num[left] = base;
+
+        return left;
+    }
+    public static void quickSort2(int[] num, int left, int right){
+
+        if (num == null || num.length < 1){
+            return;
+        }
+        if(left < right){
+            int i = quickSort1(num, left, right);
+            //
+            quickSort2(num, left, i - 1);
+            quickSort2(num, i  + 1, right);
+        }
+
+    }
+
+
     public static void main(String[] args) {
         QKSort qkSort = new QKSort();
         int[] array ={60,50,48,37,10,90,84,36};
-        qkSort.quickSort(array,0,array.length-1);
+        quickSort2(array,0,array.length-1);
+        Arrays.stream(array).forEach(i-> System.out.println(i));
     }
 
 }

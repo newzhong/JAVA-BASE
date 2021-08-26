@@ -1,5 +1,8 @@
 package node;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 /**
  * @author newzhong
  * @deprecated 单链表
@@ -124,16 +127,55 @@ public class LinkedNode {
 
     }
     public static void main(String[] args) {
-        LinkedNode linkedNode = new LinkedNode();
-        linkedNode.insertNode(1,0);
-        linkedNode.insertNode(2,1);
-        linkedNode.insertNode(3,2);
-        linkedNode.insertNode(4,3);
-        linkedNode.insertNode(5,4);
-        linkedNode.insertNode(6,5);
-        linkedNode.insertNode(7,6);
-        linkedNode.removeNode(3);
-        linkedNode.removeNode(5);
-        linkedNode.printNodeData();
+        //LinkedNode linkedNode = new LinkedNode();
+        //linkedNode.insertNode(1,0);
+        //linkedNode.insertNode(2,1);
+        //linkedNode.insertNode(3,2);
+        //linkedNode.insertNode(4,3);
+        //linkedNode.insertNode(5,4);
+        //linkedNode.insertNode(6,5);
+        //linkedNode.insertNode(7,6);
+        //linkedNode.removeNode(3);
+        //linkedNode.removeNode(5);
+        //linkedNode.printNodeData();
+        //String id = buildGroupId("");
+        //System.out.println(id);
+        String s = " 2123 ";
+        String valueRemoveUnitName = s.replace("7", "q");
+        System.out.println(valueRemoveUnitName);
+        StringBuffer stringBuffer = new StringBuffer();
+        s.trim();
+        System.out.println(s);
+        HashMap<String, Integer> map = new HashMap<>();
+
+        HashMap<String, Integer> sortedMap2 = map.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (oldVal, newVal) -> oldVal,
+                        LinkedHashMap::new));
+        List<String> result = new ArrayList<>(2);
+        int count = 0;
+        for(String  er: sortedMap2.keySet()){
+            if(count < 3){
+                result.add(s);
+            }
+        }
+        
+
+
     }
+    //public static String buildGroupId(String groupId){
+    //    if (StringUtils.isNotBlank(groupId)){
+    //        // 临时占位符
+    //        String split = ",",tempStr = "1";
+    //        String[] groupIdArray = groupId.split(",");
+    //        LinkedList groupIdLinked=new LinkedList(Arrays.asList(groupIdArray));
+    //        groupIdLinked.remove(tempStr);
+    //        String result = StringUtils.strip(groupIdLinked.toString(), "[]");
+    //        return result;
+    //    }else{
+    //        return "";
+    //    }
+    //}
 }
