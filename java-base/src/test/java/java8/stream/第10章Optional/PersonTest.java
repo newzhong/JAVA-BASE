@@ -24,4 +24,5 @@ public class PersonTest {
         String carInsuranceNameSafe = person.getCarInsuranceNameSafe(person);
         assertEquals("unknown",carInsuranceNameSafe);
     }
+
 }
